@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "994908465353",
+    "firebase_url": "https://rtdatabase-e7073.firebaseio.com",
+    "project_id": "rtdatabase-e7073",
+    "storage_bucket": "rtdatabase-e7073.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994908465353:android:06ea75cd216f9715b38518",
+        "android_client_info": {
+          "package_name": "com.deadely.ege"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994908465353-bfstvstfrh04pghjjsntdgfj91gknq8i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deadely.ege",
+            "certificate_hash": "22c34607d842ecf0898f9cfa4f5e23c01980d7cc"
+          }
+        },
+        {
+          "client_id": "994908465353-1182pqfh7l28slnc6muj68isc89j75gt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUIFfusMVAfBaPXkDF1BDERqpqNBqGljQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994908465353-1182pqfh7l28slnc6muj68isc89j75gt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
