@@ -1,9 +1,10 @@
 package com.deadely.ege.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
+import com.deadely.ege.repository.Repository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel @ViewModelInject constructor(private val repository: Repository) :
+    ViewModel() {
 
 }

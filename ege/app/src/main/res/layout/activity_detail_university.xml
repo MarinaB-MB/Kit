@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp"
+    tools:context=".ui.detailuniversity.DetailUniversityActivity"
+    tools:ignore="SpUsage,ContentDescription,KeyboardInaccessibleWidget">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        tools:src="@drawable/ic_logo" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@id/image"
+        android:layout_toRightOf="@id/image"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        tools:text="@string/fab_transformation_scrim_behavior" />
+
+    <TextView
+        android:id="@+id/site"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:textColor="@color/deep_blue"
+        android:textSize="16dp"
+        tools:text="@string/fab_transformation_scrim_behavior" />
+
+    <RelativeLayout
+        android:id="@+id/llFieldOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/site"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:id="@+id/nameFieldOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/valueFieldOne"
+            android:layout_toLeftOf="@id/valueFieldOne"
+            android:textColor="@color/blackLight"
+            android:textSize="15dp"
+            tools:text="Fудиовизуализация" />
+
+        <TextView
+            android:id="@+id/valueFieldOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:textSize="14dp"
+            tools:text="55" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/llFieldTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llFieldOne"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:id="@+id/nameFieldTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/valueFieldTwo"
+            android:layout_toLeftOf="@id/valueFieldTwo"
+            android:textColor="@color/blackLight"
+            android:textSize="15dp"
+            tools:text="Fудиовизуализация" />
+
+        <TextView
+            android:id="@+id/valueFieldTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:textSize="14dp"
+            tools:text="55" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/llFieldThree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llFieldTwo"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:id="@+id/nameFieldThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/valueFieldThree"
+            android:layout_toLeftOf="@id/valueFieldThree"
+            android:textColor="@color/blackLight"
+            android:textSize="15dp"
+            tools:text="Fудиовизуализация" />
+
+        <TextView
+            android:id="@+id/valueFieldThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:textSize="14dp"
+            tools:text="55" />
+
+
+    </RelativeLayout>
+</RelativeLayout>
+
+
+    <!--<androidx.recyclerview.widget.RecyclerView-->
+    <!--android:id="@+id/rvSpecialities"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_below="@id/site"-->
+    <!--tools:listitem="@layout/row_specialities"-->
+    <!--android:layout_marginTop="10dp" />-->

@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.deadely.ege.ui.main.MainActivity
 import com.deadely.ege.R
+import com.deadely.ege.ui.main.MainActivity
 
 class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,4 +19,5 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
+
 }
