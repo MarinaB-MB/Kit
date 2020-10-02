@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:lineSpacingExtra="6dp"
+        android:paddingVertical="20dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        tools:text="@string/fab_transformation_scrim_behavior" />
+
+    <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+        android:id="@+id/expandableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:ael_duration="200"
+        app:ael_expanded="false"
+        app:ael_interpolator="accelerateDecelerate"
+        app:ael_orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvVariants"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:itemCount="12"
+            tools:listitem="@layout/row_variants" />
+
+    </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/greyLight" />
+
+</LinearLayout>

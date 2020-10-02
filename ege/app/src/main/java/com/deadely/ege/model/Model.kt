@@ -32,7 +32,8 @@ data class Disciplines(
 data class Variant(
     val _id: String,
     val title: String,
-    val asks: List<Asks>
+    val asks: List<Asks>,
+    val number: Int
 ) : Parcelable
 
 @Parcelize
