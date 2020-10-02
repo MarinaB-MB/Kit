@@ -16,7 +16,7 @@ data class University(
 data class Speciality(
     val _id: String,
     val name: String,
-    val point: Int,
+    val point: Double,
 ) : Parcelable
 
 //////////////////////////////
