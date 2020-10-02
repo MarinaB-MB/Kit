@@ -2,6 +2,7 @@ package com.deadely.ege.ui.variants
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -35,30 +36,36 @@ class VariantsActivity : AppCompatActivity(R.layout.activity_variants) {
     }
 
     private fun initObserver() {
-        variantsViewModel.asks.observe(this, {
-            when (it) {
+        variantsViewModel.asks.observe(this, { dataState ->
+            when (dataState) {
                 is DataState.Loading -> {
                     pvLoad.makeVisible()
                     llOne.makeGone()
                 }
                 is DataState.Error -> {
-                    it.exception.printStackTrace()
+                    dataState.exception.printStackTrace()
                     pvLoad.makeGone()
                     llOne.makeGone()
-                    Log.e("VariantsActivity.TAG", "initSubscribe: ${it.exception.message}")
+                    Log.e("VariantsActivity.TAG", "initSubscribe: ${dataState.exception.message}")
                 }
                 is DataState.Success -> {
                     pvLoad.makeGone()
                     llOne.makeVisible()
-                    Log.e("VariantsActivity.TAG", "initSubscribe: ${it.data}")
-                    for (ask in variant?.asks!!) {
-                        for (apiAsk in it.data) {
-                            if (ask == apiAsk._id) {
-                                asks.add(apiAsk)
+                    Log.e("VariantsActivity.TAG", "initSubscribe: ${dataState.data}")
+                    variant?.asks?.let {
+                        for (ask in it) {
+                            for (apiAsk in dataState.data) {
+                                if (ask == apiAsk._id) {
+                                    asks.add(apiAsk)
+                                }
                             }
                         }
+
+                        asks[0]?.let {
+                            setData(asks[0])
+                        }
                     }
-                    setData(asks[0])
+
                 }
             }
         })
@@ -70,6 +77,7 @@ class VariantsActivity : AppCompatActivity(R.layout.activity_variants) {
 
     private fun setData(ask: Asks) {
         tvAsk.text = ask.ask
+        ivAsk.visibility = if (ask.image.isEmpty()) View.GONE else View.VISIBLE
         Glide.with(baseContext)
             .load(ask.image)
             .error(R.drawable.ic_error)
