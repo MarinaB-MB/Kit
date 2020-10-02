@@ -1,5 +1,6 @@
 package com.deadely.ege.repository
 
+import com.deadely.ege.model.Asks
 import com.deadely.ege.model.Disciplines
 import com.deadely.ege.model.University
 import com.deadely.ege.network.RestService
@@ -27,6 +28,17 @@ class Repository
             emit(DataState.Loading)
             val disciplines = api.getDisciplines()
             emit(DataState.Success(disciplines))
+        } catch (e: Exception) {
+            emit(DataState.Error(e))
+        }
+    }
+
+    suspend fun getAsks(): Flow<DataState<List<Asks>>> = flow {
+        try {
+
+            emit(DataState.Loading)
+            val asks = api.getAsks()
+            emit(DataState.Success(asks))
         } catch (e: Exception) {
             emit(DataState.Error(e))
         }

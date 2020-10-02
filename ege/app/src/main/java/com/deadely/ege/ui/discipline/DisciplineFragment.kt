@@ -1,5 +1,6 @@
 package com.deadely.ege.ui.discipline
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.deadely.ege.R
 import com.deadely.ege.model.Variant
+import com.deadely.ege.ui.variants.VariantsActivity
 import com.deadely.ege.utils.DataState
 import com.deadely.ege.utils.makeGone
 import com.deadely.ege.utils.makeVisible
@@ -28,12 +30,12 @@ class DisciplineFragment : Fragment(R.layout.fragment_discipline) {
         })
 
     private fun openVariantsScreen(variants: Variant) {
-//        val bundle = Bundle().apply {
-//            putParcelable(VARIANTS, variants)
-//        }
-//        val intent = Intent(activity, VariantsActivity::class.java)
-//        intent.putExtras(bundle)
-//        startActivity(intent)
+        val bundle = Bundle().apply {
+            putParcelable(VariantsActivity.VARIANT, variants)
+        }
+        val intent = Intent(activity, VariantsActivity::class.java)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
