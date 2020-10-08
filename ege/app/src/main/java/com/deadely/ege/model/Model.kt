@@ -41,6 +41,8 @@ data class Asks(
     val _id: String,
     val ask: String,
     val image: String,
+    val is_svg: Boolean,
+    val number: Int,
     val answer: List<Answer>
 ) : Parcelable
 

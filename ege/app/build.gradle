@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.deadely.ege"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -105,5 +105,13 @@ dependencies {
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
 
-    compile 'com.github.aakira:expandable-layout:1.6.0@aar'
+    //expandable layout
+    implementation 'com.github.aakira:expandable-layout:1.6.0@aar'
+
+    //android svg
+//    implementation 'com.caverock:androidsvg-aar:1.4'
+    implementation 'com.github.corouteam:GlideToVectorYou:v2.0.0'
+
+    //justify text
+    implementation 'com.github.bluejamesbond:textjustify-android:2.1.6'
 }

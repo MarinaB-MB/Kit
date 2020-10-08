@@ -18,6 +18,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
     private fun startMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+//        overridePendingTransition(R.anim.diagonaltranslate, R.anim.alpha)
         finish()
     }
 
