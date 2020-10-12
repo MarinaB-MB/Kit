@@ -3,90 +3,127 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:fillViewport="true"
     android:focusable="false"
     android:focusableInTouchMode="true"
     android:overScrollMode="never"
-    android:padding="16dp">
+    android:paddingHorizontal="16dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/rlContent"
+            android:id="@+id/llContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tvNumber"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_variable_wght"
                 android:gravity="center"
-                tools:text="13/18" />
+                tools:text="1/13" />
 
             <TextView
-                android:id="@+id/text"
+                android:id="@+id/tvText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvNumber"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/rubik_variable_wght"
                 android:textColor="@color/black"
-                tools:text="На диаграмме показан средний балл участников 10 стран в тестировании учащихся 4-го класса, по естествознанию в 2007 году (по 1000-балльной шкале). По данным диаграммы найдите число стран, в которых средний балл участников выше, чем в Венгрии." />
+                tools:text="Товарищи! сложившаяся структура организации способствует подготовки и реализации соответствующий условий активизации. Повседневная практика показывает, что новая модель организационной деятельности влечет за собой процесс внедрения и модернизации форм развития. Идейные соображения высшего порядка, а также начало повседневной работы по формированию позиции влечет за собой процесс внедрения и модернизации новых предложений. Равным образом сложившаяся структура организации требуют определения и уточнения позиций, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности же консультация с широким активом играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям. Товарищи! дальнейшее развитие различных форм деятельности обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.
+
+Повседневная практика показывает, что укрепление и развитие структуры требуют определения и уточнения существенных финансовых и административных условий. Повседневная практика показывает, что новая модель организационной деятельности в значительной степени обуславливает создание систем массового участия. Товарищи! постоянный количественный рост и сфера нашей активности требуют определения и уточнения направлений прогрессивного развития. Таким образом начало повседневной работы по формированию позиции в значительной степени обуславливает создание системы обучения кадров, соответствует насущным потребностям. Повседневная практика показывает, что укрепление и развитие структуры позволяет выполнять важные задания по разработке модели развития.
+
+С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности требуют определения и уточнения модели развития. Таким образом постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых и административных условий. Равным образом рамки и место обучения кадров обеспечивает широкому кругу (специалистов) участие в формировании соответствующий условий активизации. Не следует, однако забывать, что новая модель организационной деятельности представляет собой интересный эксперимент проверки систем массового участия. Не следует, однако забывать, что новая модель организационной деятельности способствует подготовки и реализации соответствующий условий активизации.
+
+Разнообразный и богатый опыт консультация с широким активом в значительной степени обуславливает создание направлений прогрессивного развития. Не следует, однако забывать, что начало повседневной работы по формированию позиции требуют от нас анализа существенных финансовых и административных условий. Равным образом сложившаяся структура организации способствует подготовки и реализации позиций, занимаемых участниками в отношении поставленных задач. Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции представляет собой интересный эксперимент проверки модели развития. Не следует, однако забывать, что постоянный количественный рост и сфера нашей активности требуют от нас анализа системы обучения кадров, соответствует насущным потребностям. Таким образом укрепление и" />
 
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_above="@+id/fields"
-                android:layout_below="@id/text"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvText"
+                android:layout_marginTop="16dp"
                 android:minHeight="150dp"
                 tools:src="@drawable/ic_logo" />
 
-            <LinearLayout
-                android:id="@+id/fields"
+            <RelativeLayout
+                android:layout_below="@id/image"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/one"
+                <LinearLayout
+                    android:id="@+id/llFields"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:fontFamily="@font/rubik_variable_wght"
-                    android:gravity="center"
-                    tools:text="15" />
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/two"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:fontFamily="@font/rubik_variable_wght"
-                    android:gravity="center"
-                    tools:text="15" />
+                    <TextView
+                        android:id="@+id/one"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:fontFamily="@font/rubik_variable_wght"
+                        android:gravity="center"
+                        android:onClick="checkAnswer"
+                        android:textColor="@color/black"
+                        tools:text="15" />
 
-                <TextView
-                    android:id="@+id/three"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:fontFamily="@font/rubik_variable_wght"
-                    android:gravity="center"
-                    tools:text="15" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/greyLight" />
 
-                <TextView
-                    android:id="@+id/four"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:fontFamily="@font/rubik_variable_wght"
-                    android:gravity="center"
-                    tools:text="15" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/two"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:fontFamily="@font/rubik_variable_wght"
+                        android:gravity="center"
+                        android:onClick="checkAnswer"
+                        android:textColor="@color/black"
+                        tools:text="15" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/greyLight" />
+
+                    <TextView
+                        android:id="@+id/three"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:fontFamily="@font/rubik_variable_wght"
+                        android:gravity="center"
+                        android:onClick="checkAnswer"
+                        android:textColor="@color/black"
+                        tools:text="15" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/greyLight" />
+
+                    <TextView
+                        android:id="@+id/four"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:fontFamily="@font/rubik_variable_wght"
+                        android:gravity="center"
+                        android:onClick="checkAnswer"
+                        android:textColor="@color/black"
+                        tools:text="15" />
+                </LinearLayout>
+            </RelativeLayout>
         </RelativeLayout>
 
         <ProgressBar

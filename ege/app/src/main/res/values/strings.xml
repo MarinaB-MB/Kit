@@ -5,4 +5,5 @@
     <string name="menu_home">Главная</string>
     <string name="menu_gallery">Дициплины</string>
     <string name="menu_slideshow">Учебные заведения</string>
+    <string name="ask_number">Вопрос № %s</string>
 </resources>

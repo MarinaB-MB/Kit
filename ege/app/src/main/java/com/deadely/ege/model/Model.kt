@@ -38,12 +38,12 @@ data class Variant(
 
 @Parcelize
 data class Asks(
-    val _id: String,
-    val ask: String,
-    val image: String,
-    val is_svg: Boolean,
-    val number: Int,
-    val answer: List<Answer>
+    val _id: String = "",
+    val ask: String = "",
+    val image: String = "",
+    val is_svg: Boolean = false,
+    val number: Int = -1,
+    val answer: List<Answer> = arrayListOf()
 ) : Parcelable
 
 
