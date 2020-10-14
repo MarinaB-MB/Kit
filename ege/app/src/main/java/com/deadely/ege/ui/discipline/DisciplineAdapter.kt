@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.deadely.ege.R
+import com.deadely.ege.base.CURRENT_DISCIPLINE
 import com.deadely.ege.model.Disciplines
 import com.deadely.ege.model.Variant
+import com.deadely.ege.utils.PreferencesManager
+import com.deadely.ege.utils.PreferencesManager.set
 import kotlinx.android.synthetic.main.row_discipline.view.*
 
 class DisciplineAdapter(
@@ -21,12 +24,14 @@ class DisciplineAdapter(
         LayoutInflater.from(parent.context).inflate(R.layout.row_discipline, parent, false)
     )
 
+
     override fun onBindViewHolder(holder: DisciplineAdapter.DisciplinesViewHolder, position: Int) {
         holder.bind(list[position])
     }
 
     inner class DisciplinesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(unit: Disciplines) {
+            val preferences = PreferencesManager.defaultPrefs(itemView.context)
             with(itemView) {
                 expandableLayout.collapse()
                 tvName.text = unit.name
@@ -35,6 +40,7 @@ class DisciplineAdapter(
                     object : VariantsAdapter.OnClickListener {
                         override fun onClick(unit: Variant) {
                             clickListener?.onVariantClick(unit)
+                            preferences.set(CURRENT_DISCIPLINE, unit.eid)
                         }
                     })
                 rvVariants.adapter = adapter

@@ -16,7 +16,7 @@ data class University(
 data class Speciality(
     val _id: String,
     val name: String,
-    val point: Double,
+    val point: Double
 ) : Parcelable
 
 //////////////////////////////
@@ -26,6 +26,8 @@ data class Disciplines(
     val name: String,
     val image: String,
     val variants: List<Variant>,
+    val eid: String,
+    val max_points: Int
 ) : Parcelable
 
 @Parcelize
@@ -33,7 +35,8 @@ data class Variant(
     val _id: String,
     val title: String,
     val asks: List<String>,
-    val number: Int
+    val number: Int,
+    val eid: String
 ) : Parcelable
 
 @Parcelize

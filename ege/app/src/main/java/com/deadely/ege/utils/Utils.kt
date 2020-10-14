@@ -32,4 +32,5 @@ class Utils {
             return ContextCompat.getColor(App.instance.applicationContext, id)
         }
     }
+
 }

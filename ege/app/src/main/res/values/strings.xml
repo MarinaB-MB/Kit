@@ -5,5 +5,20 @@
     <string name="menu_home">Главная</string>
     <string name="menu_gallery">Дициплины</string>
     <string name="menu_slideshow">Учебные заведения</string>
+
     <string name="ask_number">Вопрос № %s</string>
+
+    <string name="more_details">Подробнее</string>
+    <string name="your_points">Ваш балл</string>
+    <string name="your_result">Вы набрали</string>
+    <string name="max_value">Максимальный балл %s</string>
+
+    <string name="no_last_result">У Вас нет последних результатов.\nПройдите тест, чтобы узнать результат.</string>
+    <string name="your_middle_points">Ваш средний балл:</string>
+
+    <string name="points">баллов</string>
+    <string name="rysskiu">Русский язык %s</string>
+    <string name="matematika">Математика %s</string>
+    <string name="fizika">Физика %s</string>
+    <string name="informatika">Информатика %s</string>
 </resources>
