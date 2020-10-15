@@ -6,53 +6,53 @@
     android:padding="16dp"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/tvDescription"
+    <RelativeLayout
+        android:id="@+id/rlContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/rubik_variable_wght"
-        android:gravity="center"
-        android:text="@string/your_middle_points"
-        android:textSize="20sp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvPoints"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvDescription"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/rubik_variable_wght"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        tools:text="14 баллов" />
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_variable_wght"
+            android:gravity="center"
+            android:text="@string/your_middle_points"
+            android:textColor="@color/blackLight"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/tvDisciplines"
-        android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tvPoints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvDescription"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/rubik_variable_wght"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="14 баллов" />
+
+        <TextView
+            android:id="@+id/tvDisciplines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPoints"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/rubik_variable_wght"
+            android:textColor="@color/blackLight"
+            android:textSize="18sp"
+            tools:text="Русский язык - 22\nМатематика - 10\nФизика - 2\nИнформатика - 4" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/pvLoad"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvPoints"
-        android:layout_marginTop="40dp"
-        tools:text="Русский язык - 22\nМатематика - 10\nФизика - 2\nИнформатика - 4" />
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/progress_bar"
+        android:progressDrawable="@drawable/progress_bar"
+        android:visibility="gone" />
+
 </RelativeLayout>
-
-
-    <!--<TextView-->
-    <!--android:id="@+id/tvInformatika"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_below="@id/tvRysskiu"-->
-    <!--tools:text="Информатика - 4" />-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/tvMatematika"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_below="@id/tvInformatika"-->
-    <!--tools:text="Математика - 10" />-->
-
-    <!--<TextView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_below="@id/tvMatematika"-->
-    <!--tools:text="Физика - 2" />-->

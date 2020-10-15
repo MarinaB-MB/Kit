@@ -17,8 +17,8 @@
     <string name="your_middle_points">Ваш средний балл:</string>
 
     <string name="points">баллов</string>
-    <string name="rysskiu">Русский язык %s</string>
-    <string name="matematika">Математика %s</string>
-    <string name="fizika">Физика %s</string>
-    <string name="informatika">Информатика %s</string>
+    <string name="rysskiu">Русский язык - %s\n</string>
+    <string name="matematika">Математика - %s\n</string>
+    <string name="fizika">Физика - %s\n</string>
+    <string name="informatika">Информатика - %s\n</string>
 </resources>

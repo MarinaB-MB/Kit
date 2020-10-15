@@ -27,59 +27,65 @@ class ResultListActivity : AppCompatActivity(R.layout.activity_result_list) {
     private var failCount = 0
     private var allCount = 0
     private var points = 0
-    private var list: ArrayList<Asks>? = arrayListOf()
+    private var list: ArrayList<Asks> = arrayListOf()
+    var currentDiscipline: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         preferences = PreferencesManager.defaultPrefs(this)
-        intent?.extras?.let {
-            list = it.getParcelableArrayList<Asks>(CURRENT_VARIANT)
-            successCount = it.getInt(SUCCESS_COUNT)
-            failCount = it.getInt(FAIL_COUNT)
-            points = it.getInt(POINTS)
-        }
-        list?.let { allCount = it.size }
+        getExtras()
         initView()
         setListeners()
     }
 
-    private fun setListeners() {
-        tvMore.setOnClickListener {
-//            llResultCount.startAnimation(
-//                AnimationUtils.loadAnimation(this, R.anim.translate_result)
-//            )
+    private fun getExtras() {
+        intent?.extras?.let {
+            it.getParcelableArrayList<Asks>(CURRENT_VARIANT)?.let { asks -> list = asks }
+            successCount = it.getInt(SUCCESS_COUNT)
+            failCount = it.getInt(FAIL_COUNT)
+            points = it.getInt(POINTS)
         }
+        allCount = list.size
+    }
+
+    private fun setListeners() {
+        //todo anim for tvMore
         btnClose.setOnClickListener { finish() }
     }
 
     private fun initView() {
-        adapter = AsksAdapter(list!!)
+        adapter = AsksAdapter(list)
         rvAsks.adapter = adapter
+
         tvMore.paintFlags = tvMore.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-        var text = preferences[CURRENT_DISCIPLINE, ""]
+        currentDiscipline = preferences[CURRENT_DISCIPLINE, ""]
+        setPoints(currentDiscipline)
+        tvMaxValue.text = Utils.getString(R.string.max_value).format(currentDiscipline)
+        preferences[CURRENT_DISCIPLINE] = ""
+        tvAskCount.text = "${successCount}/${allCount}"
+        tvPoint.text = points.toString()
+    }
+
+    private fun setPoints(text: String?) {
         when (text) {
             MATEMATIKA -> {
-                text = preferences[MAX_VALUE_MATEMATIKA, 0].toString()
+                currentDiscipline = preferences[MAX_VALUE_MATEMATIKA, 0].toString()
                 preferences[USERS_LAST_POINT_MATEMATIKA] = points
             }
             FIZIKA -> {
-                text = preferences[MAX_VALUE_FIZIKA, 0].toString()
+                currentDiscipline = preferences[MAX_VALUE_FIZIKA, 0].toString()
                 preferences[USERS_LAST_POINT_FIZIKA] = points
             }
             INFORMATIKA -> {
-                text = preferences[MAX_VALUE_INFORMATIKA, 0].toString()
+                currentDiscipline = preferences[MAX_VALUE_INFORMATIKA, 0].toString()
                 preferences[USERS_LAST_POINT_INFORMATIKA] = points
 
             }
             RYSSKIU -> {
-                text = preferences[MAX_VALUE_RYSSKIU, 0].toString()
+                currentDiscipline = preferences[MAX_VALUE_RYSSKIU, 0].toString()
                 preferences[USERS_LAST_POINT_RYSSKIU] = points
             }
         }
-        tvMaxValue.text = Utils.getString(R.string.max_value).format(text)
-        preferences[CURRENT_DISCIPLINE] = ""
-        tvAskCount.text = "${successCount}/${allCount}"
-        tvPoint.text = points.toString()
     }
 }

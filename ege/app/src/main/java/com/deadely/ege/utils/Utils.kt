@@ -16,11 +16,6 @@ fun View.makeVisible() {
     visibility = View.VISIBLE
 }
 
-fun decodeString(imageString: String): Bitmap {
-    val decodedString: ByteArray = Base64.decode(imageString, Base64.DEFAULT)
-    return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
-}
-
 class Utils {
     companion object {
 
@@ -30,6 +25,20 @@ class Utils {
 
         fun getColor(id: Int): Int {
             return ContextCompat.getColor(App.instance.applicationContext, id)
+        }
+
+        fun decodeString(imageString: String): Bitmap {
+            val decodedString: ByteArray = Base64.decode(imageString, Base64.DEFAULT)
+            return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+        }
+
+        fun getMiddleValue(list: List<Int>): Int {
+            var middleCount = 0
+            for (item in list) {
+                middleCount += item
+            }
+            middleCount /= list.size
+            return middleCount
         }
     }
 

@@ -32,8 +32,9 @@ class UniversityFragment : Fragment(R.layout.fragment_university) {
         val bundle = Bundle().apply {
             putParcelable(DetailUniversityActivity.UNIVERSITY, unit)
         }
-        val intent = Intent(activity, DetailUniversityActivity::class.java)
-        intent.putExtras(bundle)
+        val intent = Intent(activity, DetailUniversityActivity::class.java).apply {
+            putExtras(bundle)
+        }
         startActivity(intent)
     }
 

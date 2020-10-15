@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.observe
 import com.bumptech.glide.Glide
 import com.deadely.ege.R
 import com.deadely.ege.base.FIZIKA
@@ -51,10 +52,14 @@ class VariantsActivity : AppCompatActivity(R.layout.activity_variants) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        getExtras()
+        initObserver()
+    }
+
+    private fun getExtras() {
         intent?.extras?.let {
             variant = it.getParcelable<Variant>(VARIANT)
         }
-        initObserver()
     }
 
     private fun initObserver() {
@@ -217,8 +222,9 @@ class VariantsActivity : AppCompatActivity(R.layout.activity_variants) {
             putInt(ResultListActivity.POINTS, points)
             putParcelableArrayList(ResultListActivity.CURRENT_VARIANT, asks as ArrayList<Asks>)
         }
-        val intent = Intent(this, ResultListActivity::class.java)
-        intent.putExtras(bundle)
+        val intent = Intent(this, ResultListActivity::class.java).apply {
+            putExtras(bundle)
+        }
         startActivity(intent)
         finish()
     }
