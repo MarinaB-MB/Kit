@@ -14,9 +14,8 @@
         android:background="?android:attr/selectableItemBackground"
         android:paddingVertical="10dp"
         android:paddingStart="26dp"
-        android:paddingLeft="26dp"
+        android:fontFamily="@font/rubik_variable_wght"
         android:paddingEnd="16dp"
-        android:paddingRight="16dp"
         android:textSize="16sp"
         tools:text="@string/fab_transformation_scrim_behavior" />
 

@@ -1,58 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:focusable="false"
+    android:focusableInTouchMode="true"
+    android:overScrollMode="never"
     tools:context=".ui.home.HomeFragment">
 
     <RelativeLayout
-        android:id="@+id/rlContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvDescription"
+        <RelativeLayout
+            android:id="@+id/rlContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_variable_wght"
-            android:gravity="center"
-            android:text="@string/your_middle_points"
-            android:textColor="@color/blackLight"
-            android:textSize="20sp" />
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp">
 
-        <TextView
-            android:id="@+id/tvPoints"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvDescription"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/rubik_variable_wght"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            tools:text="14 баллов" />
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:gravity="center"
+                android:text="@string/your_middle_points"
+                android:textColor="@color/blackLight"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/tvDisciplines"
+            <TextView
+                android:id="@+id/tvPoints"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDescription"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="14 баллов" />
+
+            <TextView
+                android:id="@+id/tvDisciplines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPoints"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:textColor="@color/blackLight"
+                android:textSize="18sp"
+                tools:text="Русский язык - 22\nМатематика - 10\nФизика - 2\nИнформатика - 4" />
+
+            <TextView
+                android:id="@+id/tvYourUnis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDisciplines"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:text="@string/unis_list"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/tvYourUnis"
+                android:background="@color/greyLight" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlList"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rlContent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUnis"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
+                android:overScrollMode="never"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvEmptyUnisList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:gravity="center"
+                android:paddingHorizontal="30dp"
+                android:text="@string/empty_unis_list"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/pvLoad"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvPoints"
-            android:layout_marginTop="40dp"
-            android:fontFamily="@font/rubik_variable_wght"
-            android:textColor="@color/blackLight"
-            android:textSize="18sp"
-            tools:text="Русский язык - 22\nМатематика - 10\nФизика - 2\nИнформатика - 4" />
+            android:layout_centerInParent="true"
+            android:indeterminateDrawable="@drawable/progress_bar"
+            android:progressDrawable="@drawable/progress_bar"
+            android:visibility="gone" />
+
     </RelativeLayout>
-
-    <ProgressBar
-        android:id="@+id/pvLoad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:indeterminateDrawable="@drawable/progress_bar"
-        android:progressDrawable="@drawable/progress_bar"
-        android:visibility="gone" />
-
-</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

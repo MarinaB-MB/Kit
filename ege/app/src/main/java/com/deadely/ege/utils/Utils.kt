@@ -3,18 +3,8 @@ package com.deadely.ege.utils
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
-import android.view.View
 import androidx.core.content.ContextCompat
 import com.deadely.ege.base.App
-
-
-fun View.makeGone() {
-    visibility = View.GONE
-}
-
-fun View.makeVisible() {
-    visibility = View.VISIBLE
-}
 
 class Utils {
     companion object {

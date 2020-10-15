@@ -16,18 +16,19 @@
 
         <ImageView
             android:id="@+id/image"
-            android:layout_gravity="center_vertical"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_gravity="center_vertical"
             tools:src="@drawable/ic_logo" />
 
         <TextView
-            android:layout_gravity="center_vertical"
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
+            android:fontFamily="@font/rubik_variable_wght"
             android:textColor="@color/black"
             android:textSize="18dp"
             tools:text="@string/fab_transformation_scrim_behavior" />
@@ -39,9 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/llHeader"
         android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:clickable="true"
+        android:fontFamily="@font/rubik_variable_wght"
         android:textColor="@color/deep_blue"
         android:textSize="16dp"
         tools:text="@string/fab_transformation_scrim_behavior" />
@@ -60,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/valueFieldOne"
-            android:layout_toLeftOf="@id/valueFieldOne"
+            android:fontFamily="@font/rubik_variable_wght"
             android:textColor="@color/blackLight"
             android:textSize="15dp"
             tools:text="Fудиовизуализация" />
@@ -70,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:fontFamily="@font/rubik_variable_wght"
             android:textSize="14dp"
             tools:text="55" />
 
@@ -91,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/valueFieldTwo"
-            android:layout_toLeftOf="@id/valueFieldTwo"
+            android:fontFamily="@font/rubik_variable_wght"
             android:textColor="@color/blackLight"
             android:textSize="15dp"
             tools:text="Fудиовизуализация" />
@@ -101,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:fontFamily="@font/rubik_variable_wght"
             android:textSize="14dp"
             tools:text="55" />
 
@@ -122,7 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/valueFieldThree"
-            android:layout_toLeftOf="@id/valueFieldThree"
+            android:fontFamily="@font/rubik_variable_wght"
             android:textColor="@color/blackLight"
             android:textSize="15dp"
             tools:text="Fудиовизуализация" />
@@ -132,19 +133,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:fontFamily="@font/rubik_variable_wght"
             android:textSize="14dp"
             tools:text="55" />
 
 
     </RelativeLayout>
 </RelativeLayout>
-
-
-    <!--<androidx.recyclerview.widget.RecyclerView-->
-    <!--android:id="@+id/rvSpecialities"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_below="@id/site"-->
-    <!--tools:listitem="@layout/row_specialities"-->
-    <!--android:layout_marginTop="10dp" />-->

@@ -15,6 +15,7 @@
         android:lineSpacingExtra="6dp"
         android:paddingVertical="20dp"
         android:textColor="@color/black"
+        android:fontFamily="@font/rubik_variable_wght"
         android:textSize="18sp"
         tools:text="@string/fab_transformation_scrim_behavior" />
 

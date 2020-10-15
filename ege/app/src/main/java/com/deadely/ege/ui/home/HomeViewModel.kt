@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.deadely.ege.R
 import com.deadely.ege.base.*
 import com.deadely.ege.model.Point
+import com.deadely.ege.model.University
 import com.deadely.ege.repository.Repository
 import com.deadely.ege.utils.DataState
 import com.deadely.ege.utils.PreferencesManager
@@ -25,6 +26,10 @@ class HomeViewModel @ViewModelInject constructor(
     @ApplicationContext context: Context
 ) :
     ViewModel() {
+
+    private val mUniversities = MutableLiveData<DataState<List<University>>>()
+    val universities: LiveData<DataState<List<University>>>
+        get() = mUniversities
 
     private val mPoint = MutableLiveData<DataState<List<Point>>>()
 
@@ -99,5 +104,31 @@ class HomeViewModel @ViewModelInject constructor(
                 mPoint.postValue(DataState.Success(dataState.data))
             }
         }
+    }
+
+    fun getUniversities() {
+        viewModelScope.launch {
+            repository.getUniversitiesList()
+                .onEach { dataState -> subscribeUniversitiesData(dataState) }
+                .launchIn(viewModelScope)
+        }
+    }
+
+    private fun subscribeUniversitiesData(dataState: DataState<List<University>>) {
+        when (dataState) {
+            is DataState.Loading -> {
+                mUniversities.postValue(DataState.Loading)
+            }
+            is DataState.Error -> {
+                mUniversities.postValue(DataState.Error(dataState.exception))
+            }
+            is DataState.Success -> {
+                mUniversities.postValue(DataState.Success(dataState.data))
+            }
+        }
+    }
+
+    fun getMiddleValue(): String {
+        return preferences[USERS_LAST_POINT, 0].toString()
     }
 }

@@ -21,4 +21,7 @@
     <string name="matematika">Математика - %s\n</string>
     <string name="fizika">Физика - %s\n</string>
     <string name="informatika">Информатика - %s\n</string>
+
+    <string name="empty_unis_list">Учитывая Ваш средний балл, мы не смогли подобрать подходящих университетов</string>
+    <string name="unis_list">Вам может подойти: </string>
 </resources>
