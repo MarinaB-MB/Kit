@@ -32,9 +32,9 @@ class HomeViewModel @ViewModelInject constructor(
         get() = mUniversities
 
     private val mPoint = MutableLiveData<DataState<List<Point>>>()
-
     val point: LiveData<DataState<List<Point>>>
         get() = mPoint
+
     private var preferences: SharedPreferences =
         PreferencesManager.defaultPrefs(context)
 
@@ -53,7 +53,6 @@ class HomeViewModel @ViewModelInject constructor(
         val text3 = Utils.getString(R.string.fizika)
             .format(preferences[USERS_LAST_POINT_FIZIKA, 0])
         return text.plus(text1).plus(text2).plus(text3)
-
     }
 
     fun getSecondPoint() {
