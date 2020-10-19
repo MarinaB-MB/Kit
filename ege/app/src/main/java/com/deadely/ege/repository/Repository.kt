@@ -1,18 +1,21 @@
 package com.deadely.ege.repository
 
+import com.deadely.ege.database.AppDataBase
 import com.deadely.ege.model.Asks
 import com.deadely.ege.model.Disciplines
-import com.deadely.ege.model.Point
+import com.deadely.ege.model.PointsObject
 import com.deadely.ege.model.University
 import com.deadely.ege.network.RestService
 import com.deadely.ege.utils.DataState
+import com.deadely.ege.utils.Utils
+import com.deadely.ege.utils.mapToPointList
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 
 class Repository
-@Inject constructor(private val api: RestService) {
+@Inject constructor(private val api: RestService, private val db: AppDataBase) {
 
     suspend fun getUniversitiesList(): Flow<DataState<List<University>>> = flow {
         try {
@@ -44,18 +47,18 @@ class Repository
         }
     }
 
-
-    suspend fun getMiddle(list: List<String>): Flow<DataState<List<Point>>> = flow {
+    suspend fun getPoints(): Flow<DataState<PointsObject>> = flow {
         try {
             emit(DataState.Loading)
-            val point = mutableListOf<Point>()
-            for (item in list) {
-                point.addAll(api.getSecondPoint("{\"first_point\":\"$item\"}"))
+            val points = if (db.pointsDao().getPoints().isNullOrEmpty()) {
+                api.getPoints()
+            } else {
+                db.pointsDao().getPoints().mapToPointList()
             }
-            emit(DataState.Success(point))
-        } catch (e: java.lang.Exception) {
+            db.pointsDao().addAllToPoints(Utils.mapList(points))
+            emit(DataState.Success(points[0]))
+        } catch (e: Exception) {
             emit(DataState.Error(e))
         }
     }
-
 }

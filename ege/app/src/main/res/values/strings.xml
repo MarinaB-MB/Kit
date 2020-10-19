@@ -24,4 +24,6 @@
 
     <string name="empty_unis_list">Учитывая Ваш средний балл, мы не смогли подобрать подходящих университетов</string>
     <string name="unis_list">Вам может подойти: </string>
+    <string name="seconds_point">вторичных баллов</string>
+    <string name="first_points">Ваши первичные баллы по предметам:</string>
 </resources>

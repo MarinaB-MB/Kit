@@ -32,7 +32,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         })
 
     private val homeViewModel: HomeViewModel by viewModels()
-    val list = mutableListOf<University>()
+    var list = mutableListOf<University>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,38 +61,41 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     pvLoad.makeGone()
                     rlContent.makeVisible()
                     rvUnis.makeVisible()
-                    tvEmptyUnisList.makeGone()
-                    if (list.isEmpty()) {
-                        rvUnis.makeGone()
-                        showEmptyListMessage()
-                    }
                     Log.e(TAG, "initSubscribe: ${it.data}")
                     tvPoints.requestFocus()
                     tvPoints.text = homeViewModel.getMiddlePoint(it.data).toString()
                 }
             }
         })
-        homeViewModel.universities.observe(viewLifecycleOwner, {
-            when (it) {
+        homeViewModel.universities.observe(viewLifecycleOwner, { rawData ->
+            when (rawData) {
                 is DataState.Loading -> {
                 }
                 is DataState.Error -> {
-                    it.exception.printStackTrace()
+                    rawData.exception.printStackTrace()
                     rvUnis.makeGone()
                     tvEmptyUnisList.makeGone()
-                    Log.e(TAG, "initSubscribe: ${it.exception.message}")
+                    Log.e(TAG, "initSubscribe: ${rawData.exception.message}")
                 }
                 is DataState.Success -> {
-                    Log.e(TAG, "initSubscribe: ${it.data}")
-                    for (item in it.data) {
+                    Log.e(TAG, "initSubscribe: ${rawData.data}")
+                    val middleValue = homeViewModel.getMiddleValue().toInt()
+                    for (item in rawData.data) {
                         for (speciality in item.specialities) {
-                            if (homeViewModel.getMiddleValue()
-                                    .toInt() >= speciality.point.toInt()
+                            if (middleValue >= speciality.point.toInt()
                             ) {
                                 list.add(item)
                             }
                         }
                     }
+                    if (list.isEmpty()) {
+                        rvUnis.makeGone()
+                        tvEmptyUnisList.makeVisible()
+                    } else {
+                        tvEmptyUnisList.makeGone()
+                        rvUnis.makeVisible()
+                    }
+                    list = list.distinctBy { it.name }.toMutableList()
                     adapter.setData(list)
 
                 }
@@ -100,13 +103,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         })
     }
 
-    private fun showEmptyListMessage() {
-        tvEmptyUnisList.makeVisible()
-        rvUnis.makeGone()
-    }
-
     private fun init() {
-        homeViewModel.getSecondPoint()
+        homeViewModel.getSecondsPoints()
         if (homeViewModel.isResult()) {
             tvDisciplines.text = homeViewModel.getDisciplinesResults()
         } else {

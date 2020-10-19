@@ -11,7 +11,7 @@ data class Disciplines(
     val image: String,
     val variants: List<Variant>,
     val eid: String,
-    val max_points: Int
+    val max_points: Int,
 ) : Parcelable
 
 @Parcelize

@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory
 import android.util.Base64
 import androidx.core.content.ContextCompat
 import com.deadely.ege.base.App
+import com.deadely.ege.database.PointEntity
+import com.deadely.ege.model.PointsObject
 
 class Utils {
     companion object {
@@ -22,13 +24,21 @@ class Utils {
             return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
         }
 
-        fun getMiddleValue(list: List<Int>): Int {
+        fun getMiddleValue(list: List<Int?>): Int {
             var middleCount = 0
             for (item in list) {
-                middleCount += item
+                item?.let { middleCount += it }
             }
             middleCount /= list.size
             return middleCount
+        }
+
+        fun mapList(points: List<PointsObject>): PointEntity {
+            points[0].fiz = points[0].fiz.sortedBy { it.second_point }
+            points[0].ryss = points[0].ryss.sortedBy { it.second_point }
+            points[0].infa = points[0].infa.sortedBy { it.second_point }
+            points[0].math = points[0].math.sortedBy { it.second_point }
+            return points[0].mapToEntity()
         }
     }
 

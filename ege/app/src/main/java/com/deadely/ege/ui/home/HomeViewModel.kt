@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.deadely.ege.R
 import com.deadely.ege.base.*
-import com.deadely.ege.model.Point
+import com.deadely.ege.model.PointsObject
 import com.deadely.ege.model.University
 import com.deadely.ege.repository.Repository
 import com.deadely.ege.utils.DataState
@@ -31,8 +31,8 @@ class HomeViewModel @ViewModelInject constructor(
     val universities: LiveData<DataState<List<University>>>
         get() = mUniversities
 
-    private val mPoint = MutableLiveData<DataState<List<Point>>>()
-    val point: LiveData<DataState<List<Point>>>
+    private val mPoint = MutableLiveData<DataState<PointsObject>>()
+    val point: LiveData<DataState<PointsObject>>
         get() = mPoint
 
     private var preferences: SharedPreferences =
@@ -55,43 +55,27 @@ class HomeViewModel @ViewModelInject constructor(
         return text.plus(text1).plus(text2).plus(text3)
     }
 
-    fun getSecondPoint() {
-        val infa = preferences[USERS_LAST_POINT_INFORMATIKA, 0]
-        val matem = preferences[USERS_LAST_POINT_MATEMATIKA, 0]
-        val ryss = preferences[USERS_LAST_POINT_RYSSKIU, 0]
-        val fizika = preferences[USERS_LAST_POINT_FIZIKA, 0]
-        val list = listOf("${ryss}rys", "${matem}mat", "${fizika}fiz", "${infa}inf")
+    fun getSecondsPoints() {
         viewModelScope.launch {
-            repository.getMiddle(list).onEach { dataState -> subscribeData(dataState) }
+            repository.getPoints()
+                .onEach { dataState -> subscribeData(dataState) }
                 .launchIn(viewModelScope)
         }
     }
 
-    fun getMiddlePoint(list: List<Point>): Int {
-        var mat = 0
-        var fiz = 0
-        var inf = 0
-        var rys = 0
-        for (item in list) {
-            when {
-                item.first_point.contains("mat") -> {
-                    mat = item.second_point
-                }
-                item.first_point.contains("fiz") -> {
-                    fiz = item.second_point
-                }
-                item.first_point.contains("inf") -> {
-                    inf = item.second_point
-                }
-                item.first_point.contains("rys") -> {
-                    rys = item.second_point
-                }
-            }
-        }
-        return Utils.getMiddleValue(listOf(mat, rys, inf, fiz))
+    fun getMiddlePoint(pointsObject: PointsObject): Int {
+        var infa = preferences[USERS_LAST_POINT_INFORMATIKA, 0]
+        var matem = preferences[USERS_LAST_POINT_MATEMATIKA, 0]
+        var ryss = preferences[USERS_LAST_POINT_RYSSKIU, 0]
+        var fizika = preferences[USERS_LAST_POINT_FIZIKA, 0]
+        fizika = pointsObject.fiz[fizika!!].second_point
+        ryss = pointsObject.fiz[ryss!!].second_point
+        matem = pointsObject.fiz[matem!!].second_point
+        infa = pointsObject.fiz[infa!!].second_point
+        return Utils.getMiddleValue(listOf(infa, matem, ryss, fizika))
     }
 
-    private fun subscribeData(dataState: DataState<List<Point>>) {
+    private fun subscribeData(dataState: DataState<PointsObject>) {
         when (dataState) {
             is DataState.Loading -> {
                 mPoint.postValue(DataState.Loading)

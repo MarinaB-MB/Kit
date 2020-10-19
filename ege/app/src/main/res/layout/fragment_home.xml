@@ -42,14 +42,37 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:text="14 баллов" />
+                tools:text="14" />
+
+            <TextView
+                android:id="@+id/tvDescriptionPoints"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPoints"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:gravity="center"
+                android:text="@string/seconds_point"
+                android:textColor="@color/blackLight"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvDescriptionFirstPoints"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDescriptionPoints"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/rubik_variable_wght"
+                android:text="@string/first_points"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tvDisciplines"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvPoints"
-                android:layout_marginTop="40dp"
+                android:layout_below="@id/tvDescriptionFirstPoints"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/rubik_variable_wght"
                 android:textColor="@color/blackLight"
                 android:textSize="18sp"
@@ -98,6 +121,7 @@
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/rubik_variable_wght"
                 android:gravity="center"
+                android:visibility="gone"
                 android:paddingHorizontal="30dp"
                 android:text="@string/empty_unis_list"
                 android:textColor="@color/black"

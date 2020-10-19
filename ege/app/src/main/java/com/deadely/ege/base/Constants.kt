@@ -19,3 +19,8 @@ const val USERS_LAST_POINT_RYSSKIU = "users_last_point_rysskiu"
 const val USERS_LAST_POINT_MATEMATIKA = "users_last_point_matematika"
 const val USERS_LAST_POINT_INFORMATIKA = "users_last_point_informatika"
 const val USERS_LAST_POINT_FIZIKA = "users_last_point_fizika"
+
+const val RYS = "rys"
+const val MAT = "mat"
+const val INF = "inf"
+const val FIZ = "fiz"
