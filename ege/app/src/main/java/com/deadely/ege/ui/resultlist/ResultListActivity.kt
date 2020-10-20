@@ -48,13 +48,21 @@ class ResultListActivity : BaseActivity(R.layout.activity_result_list) {
     }
 
     override fun setListeners() {
+        btnBack.setOnClickListener { openResultScreen() }
         tvMore.setOnClickListener { openVariantScreen() }
         btnClose.setOnClickListener { finish() }
+    }
+
+    private fun openResultScreen() {
+        btnBack.makeGone()
+        llResultCount.makeVisible()
+        rvAsks.makeGone()
     }
 
     private fun openVariantScreen() {
         rvAsks.adapter = adapter
         adapter.setData(list)
+        btnBack.makeVisible()
         llResultCount.makeGone()
         rvAsks.makeVisible()
     }

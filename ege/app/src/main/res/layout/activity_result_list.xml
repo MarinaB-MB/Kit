@@ -15,6 +15,15 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_close" />
 
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:visibility="gone"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_arrow_back" />
+
     <LinearLayout
         android:id="@+id/llResultCount"
         android:layout_width="wrap_content"
