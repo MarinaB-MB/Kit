@@ -64,6 +64,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     Log.e(TAG, "initSubscribe: ${it.data}")
                     tvPoints.requestFocus()
                     tvPoints.text = homeViewModel.getMiddlePoint(it.data).toString()
+                    if (list.isEmpty()) {
+                        rvUnis.makeGone()
+                        tvEmptyUnisList.makeVisible()
+                    } else {
+                        tvEmptyUnisList.makeGone()
+                        rvUnis.makeVisible()
+                    }
                 }
             }
         })
@@ -88,16 +95,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                             }
                         }
                     }
-                    if (list.isEmpty()) {
-                        rvUnis.makeGone()
-                        tvEmptyUnisList.makeVisible()
-                    } else {
-                        tvEmptyUnisList.makeGone()
-                        rvUnis.makeVisible()
-                    }
                     list = list.distinctBy { it.name }.toMutableList()
                     adapter.setData(list)
-
                 }
             }
         })

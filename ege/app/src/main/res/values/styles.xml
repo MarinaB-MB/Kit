@@ -10,6 +10,7 @@
         <item name="colorPrimary">@color/main</item>
         <item name="colorPrimaryDark">@color/deep_blue</item>
         <item name="colorAccent">@color/light</item>
+        <item name="android:fontFamily">@font/rubik_variable_wght</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

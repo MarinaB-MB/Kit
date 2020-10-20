@@ -52,8 +52,13 @@ class VariantsActivity : AppCompatActivity(R.layout.activity_variants) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initView()
         getExtras()
         initObserver()
+    }
+
+    private fun initView() {
+        title = variant?.title
     }
 
     private fun getExtras() {

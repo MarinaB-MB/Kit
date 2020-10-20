@@ -33,3 +33,25 @@ f
 .app/src/main/java/com/deadely/ege/base/Urls.kt,a\9\a9b62edbdef6434679f5406a041335329ceaeb2b
 o
 ?app/src/main/java/com/deadely/ege/database/DataTypeConverter.kt,1\3\135698256d418b84bd9c22615b3c2f6339843529
+<
+build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+m
+=app/src/main/java/com/deadely/ege/utils/PreferencesManager.kt,c\8\c8cdaa2abe5ea255b32faaacfc933945caf81374
+S
+#app/src/main/res/values/strings.xml,d\2\d2281fbb3027de2722081a53408dd77628bf080e
+Y
+)app/src/main/res/layout/fragment_home.xml,3\1\31c5880846ef63ff1963efbe141ddfd56680bb19
+c
+3app/src/main/java/com/deadely/ege/base/Constants.kt,6\d\6dc31e88768d43dcd70c548948a888a2767f9dc1
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+i
+9app/src/main/java/com/deadely/ege/ui/main/MainActivity.kt,0\7\0710da16fed969d8fe46299da40475d8d43222b8
+q
+Aapp/src/main/java/com/deadely/ege/ui/variants/VariantsActivity.kt,2\e\2e71120446d9f2e6902c61aa767bf498328577d5
+u
+Eapp/src/main/java/com/deadely/ege/ui/resultlist/ResultListActivity.kt,c\5\c5af163c6d36916011de0cbb140c69dde6ccf9d2
+n
+>app/src/main/java/com/deadely/ege/ui/resultlist/AsksAdapter.kt,6\0\60fdd59c50e7e0e4817204468337fd5dcd4c5380

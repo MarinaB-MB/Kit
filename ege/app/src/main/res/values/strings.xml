@@ -26,4 +26,5 @@
     <string name="unis_list">Вам может подойти: </string>
     <string name="seconds_point">вторичных баллов</string>
     <string name="first_points">Ваши первичные баллы по предметам:</string>
+    <string name="app_name_origin">ЕГЭ 2021</string>
 </resources>

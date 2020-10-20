@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ui.resultlist.ResultListActivity">
 
@@ -19,7 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/tvDescriptionAskCount"
@@ -78,6 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:padding="10dp"
             android:fontFamily="@font/rubik_variable_wght"
             android:gravity="center"
             android:text="@string/more_details"
@@ -88,7 +91,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAsks"
         android:layout_width="match_parent"
+        android:layout_marginHorizontal="16dp"
         android:layout_height="match_parent"
+        tools:itemCount="1"
+        android:overScrollMode="never"
+        android:layout_below="@id/btnClose"
+        android:layout_marginTop="10dp"
         android:visibility="gone"
-        tools:listitem="@layout/row_ask" />
+        tools:listitem="@layout/row_ask"
+        tools:visibility="visible" />
 </RelativeLayout>

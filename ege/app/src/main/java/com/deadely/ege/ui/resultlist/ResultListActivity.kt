@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.graphics.Paint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.deadely.ege.R
 import com.deadely.ege.base.*
 import com.deadely.ege.model.Asks
@@ -11,6 +12,8 @@ import com.deadely.ege.utils.PreferencesManager
 import com.deadely.ege.utils.PreferencesManager.get
 import com.deadely.ege.utils.PreferencesManager.set
 import com.deadely.ege.utils.Utils
+import com.deadely.ege.utils.makeGone
+import com.deadely.ege.utils.makeVisible
 import kotlinx.android.synthetic.main.activity_result_list.*
 
 class ResultListActivity : AppCompatActivity(R.layout.activity_result_list) {
@@ -22,7 +25,7 @@ class ResultListActivity : AppCompatActivity(R.layout.activity_result_list) {
     }
 
     private lateinit var preferences: SharedPreferences
-    private lateinit var adapter: AsksAdapter
+    private var adapter = AsksAdapter(listOf(), this)
     private var successCount = 0
     private var failCount = 0
     private var allCount = 0
@@ -50,14 +53,20 @@ class ResultListActivity : AppCompatActivity(R.layout.activity_result_list) {
     }
 
     private fun setListeners() {
-        //todo anim for tvMore
+        tvMore.setOnClickListener { openVariantScreen() }
         btnClose.setOnClickListener { finish() }
     }
 
-    private fun initView() {
-        adapter = AsksAdapter(list)
+    private fun openVariantScreen() {
         rvAsks.adapter = adapter
+        adapter.setData(list)
+        llResultCount.makeGone()
+        rvAsks.makeVisible()
+    }
 
+    private fun initView() {
+        rvAsks.adapter = adapter
+        rvAsks.layoutManager = LinearLayoutManager(applicationContext)
         tvMore.paintFlags = tvMore.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         currentDiscipline = preferences[CURRENT_DISCIPLINE, ""]
         setPoints(currentDiscipline)
