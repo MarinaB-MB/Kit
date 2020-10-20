@@ -1,27 +1,37 @@
 package com.deadely.ege.ui.discipline
 
+import android.content.Context
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.deadely.ege.base.*
 import com.deadely.ege.model.Disciplines
 import com.deadely.ege.repository.Repository
 import com.deadely.ege.utils.DataState
+import com.deadely.ege.utils.PreferencesManager
+import com.deadely.ege.utils.PreferencesManager.set
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-class DisciplineViewModel @ViewModelInject constructor(private val repository: Repository) :
+class DisciplineViewModel @ViewModelInject constructor(
+    private val repository: Repository,
+    @ApplicationContext private val context: Context
+) :
     ViewModel() {
 
     private val mDisciplines = MutableLiveData<DataState<List<Disciplines>>>()
     val disciplines: LiveData<DataState<List<Disciplines>>>
         get() = mDisciplines
 
+    private val preferences = PreferencesManager.defaultPrefs(context)
 
     init {
         getDisciplines()
+        preferences[CURRENT_DISCIPLINE] = ""
     }
 
     private fun getDisciplines() {
@@ -41,6 +51,25 @@ class DisciplineViewModel @ViewModelInject constructor(private val repository: R
             }
             is DataState.Success -> {
                 mDisciplines.postValue(DataState.Success(dataState.data))
+            }
+        }
+    }
+
+    fun setMaxValues(data: List<Disciplines>) {
+        for (discipline in data) {
+            when (discipline.eid) {
+                MATEMATIKA -> {
+                    preferences[MAX_VALUE_MATEMATIKA] = discipline.max_points
+                }
+                INFORMATIKA -> {
+                    preferences[MAX_VALUE_INFORMATIKA] = discipline.max_points
+                }
+                RYSSKIU -> {
+                    preferences[MAX_VALUE_RYSSKIU] = discipline.max_points
+                }
+                FIZIKA -> {
+                    preferences[MAX_VALUE_FIZIKA] = discipline.max_points
+                }
             }
         }
     }

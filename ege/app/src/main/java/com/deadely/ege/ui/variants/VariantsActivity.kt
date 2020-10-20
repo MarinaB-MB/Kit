@@ -11,14 +11,10 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
 import com.bumptech.glide.Glide
 import com.deadely.ege.R
-import com.deadely.ege.base.FIZIKA
-import com.deadely.ege.base.INFORMATIKA
-import com.deadely.ege.base.MATEMATIKA
-import com.deadely.ege.base.RYSSKIU
+import com.deadely.ege.base.BaseActivity
 import com.deadely.ege.model.Answer
 import com.deadely.ege.model.Asks
 import com.deadely.ege.model.Variant
@@ -34,40 +30,33 @@ import java.util.*
 
 
 @AndroidEntryPoint
-class VariantsActivity : AppCompatActivity(R.layout.activity_variants) {
+class VariantsActivity : BaseActivity(R.layout.activity_variants) {
     companion object {
         const val VARIANT = "VariantsActivity.VARIANT"
     }
 
-    private val LAST_ITEM = -1
     private val variantsViewModel: VariantsViewModel by viewModels()
 
     private var variant: Variant? = null
+    private val LAST_ITEM = -1
     private var asks: MutableList<Asks> = mutableListOf()
-    private var currentAsk: Asks? = null
     private var successCount = 0
     private var failCount = 0
     private var number = 0
-    private var points = 0
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initView()
-        getExtras()
-        initObserver()
-    }
-
-    private fun initView() {
+    override fun initView() {
         title = variant?.title
     }
 
-    private fun getExtras() {
+    override fun setListeners() {}
+
+    override fun getExtras() {
         intent?.extras?.let {
             variant = it.getParcelable<Variant>(VARIANT)
         }
     }
 
-    private fun initObserver() {
+    override fun initObserver() {
         variantsViewModel.asks.observe(this, { dataState ->
             when (dataState) {
                 is DataState.Loading -> {
@@ -103,7 +92,7 @@ class VariantsActivity : AppCompatActivity(R.layout.activity_variants) {
 
     fun checkAnswer(view: View) {
         var rightAnswer: Answer? = null
-        currentAsk?.answer?.let {
+        variantsViewModel.currentAsk?.answer?.let {
             for (answer in it) {
                 if (answer.right) {
                     rightAnswer = answer
@@ -112,101 +101,11 @@ class VariantsActivity : AppCompatActivity(R.layout.activity_variants) {
         }
         if ((view as TextView).text == rightAnswer?.answer) {
             successCount += 1
-            variant?.eid?.let { checkNumber(it) }
+            variant?.eid?.let { variantsViewModel.checkNumber(it) }
         } else {
             failCount += 1
         }
         getNext()
-    }
-
-    private fun checkNumber(eid: String) {
-        when (eid) {
-            MATEMATIKA -> {
-                when (currentAsk?.number) {
-                    in 1..12 -> {
-                        points += 1
-                    }
-                    in 13..15 -> {
-                        points += 2
-                    }
-                    in 16..17 -> {
-                        points += 3
-                    }
-                    in 18..19 -> {
-                        points += 4
-                    }
-                }
-            }
-            INFORMATIKA -> {
-                when (currentAsk?.number) {
-                    in 1..24 -> {
-                        points += 1
-                    }
-                    in 25..27 -> {
-                        points += 2
-                    }
-                }
-            }
-            FIZIKA -> {
-                when (currentAsk?.number) {
-                    in 1..4 -> {
-                        points += 1
-                    }
-                    in 8..10 -> {
-                        points += 1
-                    }
-                    in 13..15 -> {
-                        points += 1
-                    }
-                    in 19..20 -> {
-                        points += 1
-                    }
-                    in 22..23 -> {
-                        points += 1
-                    }
-                    in 25..26 -> {
-                        points += 1
-                    }
-                    in 5..7 -> {
-                        points += 2
-                    }
-                    in 11..12 -> {
-                        points += 2
-                    }
-                    in 16..18 -> {
-                        points += 2
-                    }
-                    21 -> {
-                        points += 2
-                    }
-                    24 -> {
-                        points += 2
-                    }
-                    26 -> {
-                        points += 2
-                    }
-                }
-            }
-            RYSSKIU -> {
-                when (currentAsk?.number) {
-                    in 1..7 -> {
-                        points += 1
-                    }
-                    in 9..15 -> {
-                        points += 1
-                    }
-                    in 17..25 -> {
-                        points += 1
-                    }
-                    8 -> {
-                        points += 5
-                    }
-                    16 -> {
-                        points += 2
-                    }
-                }
-            }
-        }
     }
 
     private fun getNext() {
@@ -224,7 +123,7 @@ class VariantsActivity : AppCompatActivity(R.layout.activity_variants) {
         val bundle = Bundle().apply {
             putInt(ResultListActivity.SUCCESS_COUNT, successCount)
             putInt(ResultListActivity.FAIL_COUNT, failCount)
-            putInt(ResultListActivity.POINTS, points)
+            putInt(ResultListActivity.POINTS, variantsViewModel.points)
             putParcelableArrayList(ResultListActivity.CURRENT_VARIANT, asks as ArrayList<Asks>)
         }
         val intent = Intent(this, ResultListActivity::class.java).apply {
@@ -235,7 +134,8 @@ class VariantsActivity : AppCompatActivity(R.layout.activity_variants) {
     }
 
     private fun setData(ask: Asks) {
-        currentAsk = ask
+        variantsViewModel.currentAsk = ask
+
         val templateString = "${number + 1}/${asks.size - 1}"
         val spannableString = SpannableString(templateString)
         spannableString.setSpan(

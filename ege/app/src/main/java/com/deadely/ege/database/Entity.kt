@@ -55,4 +55,4 @@ data class FizPointEntity(
     val second_point: Int
 ) : Parcelable, PointEntityOverClass()
 
-open class PointEntityOverClass
+abstract class PointEntityOverClass

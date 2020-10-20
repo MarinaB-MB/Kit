@@ -7,8 +7,8 @@ import com.deadely.ege.model.PointsObject
 import com.deadely.ege.model.University
 import com.deadely.ege.network.RestService
 import com.deadely.ege.utils.DataState
-import com.deadely.ege.utils.Utils
-import com.deadely.ege.utils.mapToPointList
+import com.deadely.ege.utils.mapList
+import com.deadely.ege.utils.mapToEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -53,9 +53,9 @@ class Repository
             val points = if (db.pointsDao().getPoints().isNullOrEmpty()) {
                 api.getPoints()
             } else {
-                db.pointsDao().getPoints().mapToPointList()
+                db.pointsDao().getPoints().map { it.mapToEntity() }
             }
-            db.pointsDao().addAllToPoints(Utils.mapList(points))
+            db.pointsDao().addAllToPoints(mapList(points))
             emit(DataState.Success(points[0]))
         } catch (e: Exception) {
             emit(DataState.Error(e))

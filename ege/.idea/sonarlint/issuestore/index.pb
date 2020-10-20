@@ -9,8 +9,6 @@ i
 0app/src/main/java/com/deadely/ege/utils/Utils.kt,1\a\1af42eebfaa7aeb24dd7d51fd5cdb954809e54f7
 t
 Dapp/src/main/java/com/deadely/ege/ui/university/UniversityAdapter.kt,b\4\b4908dd10e69b511c419f835c4a0fd8e3a6032ae
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 d
 4app/src/main/java/com/deadely/ege/database/Entity.kt,5\d\5d48b78169dbe625b44fbaa4e8645c6ca803ba88
 a
@@ -39,8 +37,6 @@ o
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 m
 =app/src/main/java/com/deadely/ege/utils/PreferencesManager.kt,c\8\c8cdaa2abe5ea255b32faaacfc933945caf81374
-S
-#app/src/main/res/values/strings.xml,d\2\d2281fbb3027de2722081a53408dd77628bf080e
 Y
 )app/src/main/res/layout/fragment_home.xml,3\1\31c5880846ef63ff1963efbe141ddfd56680bb19
 c
@@ -55,3 +51,19 @@ u
 Eapp/src/main/java/com/deadely/ege/ui/resultlist/ResultListActivity.kt,c\5\c5af163c6d36916011de0cbb140c69dde6ccf9d2
 n
 >app/src/main/java/com/deadely/ege/ui/resultlist/AsksAdapter.kt,6\0\60fdd59c50e7e0e4817204468337fd5dcd4c5380
+[
++app/src/main/res/layout/nav_header_main.xml,c\2\c2e5d0b244b7ce4916b4bef4396275c61eb4e7e1
+R
+"app/src/main/res/values/colors.xml,9\6\969faa2a5d9f5e8390e958d2c07f2cfd54676e6b
+f
+6app/src/main/java/com/deadely/ege/base/BaseActivity.kt,4\9\49cfb6ffcb71ec80f673ab658a573ba39cf85718
+f
+6app/src/main/java/com/deadely/ege/base/BaseFragment.kt,6\d\6d6e9a10f01dfceb3c8a83952592bf18b7b1bede
+v
+Fapp/src/main/java/com/deadely/ege/ui/discipline/DisciplineViewModel.kt,0\e\0e04e48bb16b5668cbd0903db3dead96b87dcd5d
+m
+=app/src/main/java/com/deadely/ege/ui/splash/SplashActivity.kt,3\8\382c9e73f562a1f77ac764dc530868d52187e066
+Å
+Qapp/src/main/java/com/deadely/ege/ui/detailuniversity/DetailUniversityActivity.kt,0\1\011fb98e2bf88cfe7a0f4a9c8eafb5aaa3f6b60c
+u
+Eapp/src/main/java/com/deadely/ege/ui/discipline/DisciplineFragment.kt,0\b\0bd03f1b38009667bd95293c3aa3539cc7551104

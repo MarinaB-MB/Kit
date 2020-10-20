@@ -1,3 +1,4 @@
 
-jkotlin:S3776A"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(Σ‹χύ
-Ukotlin:S1172Ϊ"0Remove this unused function parameter "variant".(¨¶»ύÿÿÿÿ8Σής‰Τ.
+Ukotlin:S1172Χ"0Remove this unused function parameter "variant".(¨¶»ύÿÿÿÿ8Σής‰Τ.
+ykotlin:S11866"ZAdd a nested comment explaining why this function is empty or complete the implementation.(Π°ς8›ύψ­Τ.
+jkotlin:S3776>"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ψ³ψϊ

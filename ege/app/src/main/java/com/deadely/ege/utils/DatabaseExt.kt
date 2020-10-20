@@ -7,63 +7,31 @@ import com.deadely.ege.database.*
 import com.deadely.ege.model.Point
 import com.deadely.ege.model.PointsObject
 
-fun MathPointEntity.mapToPoint(): Point {
-    return Point(first_point, second_point)
+fun mapList(points: List<PointsObject>): PointEntity {
+    points[0].fiz = points[0].fiz.sortedBy { it.second_point }
+    points[0].ryss = points[0].ryss.sortedBy { it.second_point }
+    points[0].infa = points[0].infa.sortedBy { it.second_point }
+    points[0].math = points[0].math.sortedBy { it.second_point }
+    return points[0].mapToEntity()
 }
 
-fun List<MathPointEntity>.mapToMathPointList(): List<Point> {
-    return map { it.mapToPoint() }
-}
-
-fun InfaPointEntity.mapToPoint(): Point {
-    return Point(first_point, second_point)
-}
-
-fun List<InfaPointEntity>.mapToInfaPointList(): List<Point> {
-    return map { it.mapToPoint() }
-}
-
-fun RyssPointEntity.mapToPoint(): Point {
-    return Point(first_point, second_point)
-}
-
-fun List<RyssPointEntity>.mapToRyssPointList(): List<Point> {
-    return map { it.mapToPoint() }
-}
-
-fun FizPointEntity.mapToPoint(): Point {
-    return Point(first_point, second_point)
-}
-
-fun List<FizPointEntity>.mapToIFizPointList(): List<Point> {
-    return map { it.mapToPoint() }
-}
-
-fun PointEntity.mapToEnity(): PointsObject {
+fun PointEntity.mapToEntity(): PointsObject {
     return PointsObject(
-        math.mapToMathPointList(),
-        infa.mapToInfaPointList(),
-        ryss.mapToRyssPointList(),
-        fiz.mapToIFizPointList()
+        math.map { Point(it.first_point, it.second_point) },
+        infa.map { Point(it.first_point, it.second_point) },
+        ryss.map { Point(it.first_point, it.second_point) },
+        fiz.map { Point(it.first_point, it.second_point) }
     )
-}
-
-fun List<PointEntity>.mapToPointList(): List<PointsObject> {
-    return map { it.mapToEnity() }
 }
 
 fun PointsObject.mapToEntity(): PointEntity {
     return PointEntity(
         0,
-        math.mapToEntity() as List<MathPointEntity>,
-        infa.mapToEntity() as List<InfaPointEntity>,
-        ryss.mapToEntity() as List<RyssPointEntity>,
-        fiz.mapToEntity() as List<FizPointEntity>
+        math.map { it.mapToEntity() } as List<MathPointEntity>,
+        infa.map { it.mapToEntity() } as List<InfaPointEntity>,
+        ryss.map { it.mapToEntity() } as List<RyssPointEntity>,
+        fiz.map { it.mapToEntity() } as List<FizPointEntity>
     )
-}
-
-fun List<Point>.mapToEntity(): List<PointEntityOverClass> {
-    return map { it.mapToEntity() }
 }
 
 fun Point.mapToEntity(): PointEntityOverClass {
