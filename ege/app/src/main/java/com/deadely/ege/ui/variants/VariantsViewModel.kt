@@ -71,14 +71,7 @@ class VariantsViewModel @ViewModelInject constructor(private val repository: Rep
                 }
             }
             INFORMATIKA -> {
-                when (currentAsk?.number) {
-                    in 1..24 -> {
-                        points += 1
-                    }
-                    in 25..27 -> {
-                        points += 2
-                    }
-                }
+                points += 1
             }
             FIZIKA -> {
                 when (currentAsk?.number) {
