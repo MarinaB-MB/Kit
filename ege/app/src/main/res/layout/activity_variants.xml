@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvText"
                 android:layout_marginTop="16dp"
-                android:minHeight="150dp"
+                android:minHeight="300dp"
                 tools:src="@drawable/ic_logo" />
 
             <RelativeLayout
