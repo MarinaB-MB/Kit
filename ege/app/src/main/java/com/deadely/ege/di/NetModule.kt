@@ -1,9 +1,9 @@
 package com.deadely.ege.di
 
-import com.deadely.ege.base.BASE_URL
-import com.deadely.ege.base.TOKEN
 import com.deadely.ege.network.AuthInterceptor
 import com.deadely.ege.network.RestService
+import com.deadely.ege.utils.BASE_URL
+import com.deadely.ege.utils.TOKEN
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

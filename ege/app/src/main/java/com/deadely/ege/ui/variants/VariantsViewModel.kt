@@ -5,13 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.deadely.ege.base.FIZIKA
-import com.deadely.ege.base.INFORMATIKA
-import com.deadely.ege.base.MATEMATIKA
-import com.deadely.ege.base.RYSSKIU
 import com.deadely.ege.model.Asks
 import com.deadely.ege.repository.Repository
-import com.deadely.ege.utils.DataState
+import com.deadely.ege.utils.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.deadely.ege.base
+package com.deadely.ege.utils
 
 
 const val GET_UNIVERSITIES = "university"

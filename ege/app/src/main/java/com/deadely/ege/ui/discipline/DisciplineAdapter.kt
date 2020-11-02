@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.deadely.ege.R
-import com.deadely.ege.base.CURRENT_DISCIPLINE
 import com.deadely.ege.model.Disciplines
 import com.deadely.ege.model.Variant
+import com.deadely.ege.utils.CURRENT_DISCIPLINE
 import com.deadely.ege.utils.PreferencesManager
 import com.deadely.ege.utils.PreferencesManager.set
 import kotlinx.android.synthetic.main.row_discipline.view.*

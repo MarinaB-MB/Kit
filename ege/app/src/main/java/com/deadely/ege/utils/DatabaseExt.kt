@@ -1,8 +1,5 @@
 package com.deadely.ege.utils
 
-import com.deadely.ege.base.FIZ
-import com.deadely.ege.base.MAT
-import com.deadely.ege.base.RYS
 import com.deadely.ege.database.*
 import com.deadely.ege.model.Point
 import com.deadely.ege.model.PointsObject

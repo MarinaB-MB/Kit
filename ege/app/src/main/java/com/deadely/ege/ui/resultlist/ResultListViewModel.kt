@@ -4,9 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import com.deadely.ege.base.*
 import com.deadely.ege.repository.Repository
-import com.deadely.ege.utils.PreferencesManager
+import com.deadely.ege.utils.*
 import com.deadely.ege.utils.PreferencesManager.get
 import com.deadely.ege.utils.PreferencesManager.set
 import dagger.hilt.android.qualifiers.ApplicationContext

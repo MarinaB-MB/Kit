@@ -8,14 +8,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.deadely.ege.R
-import com.deadely.ege.base.*
 import com.deadely.ege.model.PointsObject
 import com.deadely.ege.model.University
 import com.deadely.ege.repository.Repository
-import com.deadely.ege.utils.DataState
-import com.deadely.ege.utils.PreferencesManager
+import com.deadely.ege.utils.*
 import com.deadely.ege.utils.PreferencesManager.get
-import com.deadely.ege.utils.Utils
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
