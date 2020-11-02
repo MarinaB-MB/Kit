@@ -2,7 +2,6 @@ package com.deadely.ege.ui.discipline
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.deadely.ege.R
@@ -29,8 +28,8 @@ class DisciplineFragment : BaseFragment(R.layout.fragment_discipline) {
             override fun onVariantClick(unit: Variant) {
                 openVariantsScreen(unit)
             }
-
         })
+
 
     private fun openVariantsScreen(variants: Variant) {
         val bundle = Bundle().apply {
@@ -58,12 +57,10 @@ class DisciplineFragment : BaseFragment(R.layout.fragment_discipline) {
                     it.exception.printStackTrace()
                     pvLoad.makeGone()
                     rvDisciplines.makeGone()
-                    Log.e(TAG, "initSubscribe: ${it.exception.message}")
                 }
                 is DataState.Success -> {
                     pvLoad.makeGone()
                     rvDisciplines.makeVisible()
-                    Log.e(TAG, "initSubscribe: ${it.data}")
                     disciplineViewModel.setMaxValues(it.data)
                     adapter.setData(it.data)
                 }

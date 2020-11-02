@@ -2,7 +2,6 @@ package com.deadely.ege.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.deadely.ege.R
@@ -50,13 +49,11 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                     rlContent.makeGone()
                     rvUnis.makeGone()
                     tvEmptyUnisList.makeGone()
-                    Log.e(TAG, "initSubscribe: ${it.exception.message}")
                 }
                 is DataState.Success -> {
                     pvLoad.makeGone()
                     rlContent.makeVisible()
                     rvUnis.makeVisible()
-                    Log.e(TAG, "initSubscribe: ${it.data}")
                     tvPoints.requestFocus()
                     tvPoints.text = homeViewModel.getMiddlePoint(it.data).toString()
                     if (list.isEmpty()) {
@@ -77,10 +74,8 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                     rawData.exception.printStackTrace()
                     rvUnis.makeGone()
                     tvEmptyUnisList.makeGone()
-                    Log.e(TAG, "initSubscribe: ${rawData.exception.message}")
                 }
                 is DataState.Success -> {
-                    Log.e(TAG, "initSubscribe: ${rawData.data}")
                     val middleValue = homeViewModel.getMiddleValue().toInt()
                     for (item in rawData.data) {
                         for (speciality in item.specialities) {
