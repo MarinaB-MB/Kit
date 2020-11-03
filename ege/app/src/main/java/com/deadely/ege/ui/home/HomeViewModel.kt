@@ -65,10 +65,10 @@ class HomeViewModel @ViewModelInject constructor(
         var matem = preferences[USERS_LAST_POINT_MATEMATIKA, 0]
         var ryss = preferences[USERS_LAST_POINT_RYSSKIU, 0]
         var fizika = preferences[USERS_LAST_POINT_FIZIKA, 0]
-        fizika = pointsObject.fiz[fizika!!].second_point
-        ryss = pointsObject.fiz[ryss!!].second_point
-        matem = pointsObject.fiz[matem!!].second_point
-        infa = pointsObject.fiz[infa!!].second_point
+        fizika = pointsObject.fiz[fizika!!].secondPoint
+        ryss = pointsObject.fiz[ryss!!].secondPoint
+        matem = pointsObject.fiz[matem!!].secondPoint
+        infa = pointsObject.fiz[infa!!].secondPoint
         return Utils.getMiddleValue(listOf(infa, matem, ryss, fizika))
     }
 

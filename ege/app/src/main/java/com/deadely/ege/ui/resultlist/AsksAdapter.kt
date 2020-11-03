@@ -62,7 +62,7 @@ class AsksAdapter(
                 four.text = unit.answer[3].answer
                 if (unit.image.isNotEmpty()) {
                     image.makeVisible()
-                    if (unit.is_svg) {
+                    if (unit.isSvg) {
                         GlideToVectorYou.justLoadImage(activity, Uri.parse(unit.image), image)
                     } else {
                         Glide.with(image.context)

@@ -1,20 +1,21 @@
 package com.deadely.ege.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class University(
-    val _id: String,
-    val image: String,
-    val name: String,
-    val site: String,
-    val specialities: List<Speciality>
+    @SerializedName("_id") val id: String,
+    @SerializedName("image") val image: String,
+    @SerializedName("name") val name: String,
+    @SerializedName("site") val site: String,
+    @SerializedName("specialities") val specialities: List<Speciality>
 ) : Parcelable
 
 @Parcelize
 data class Speciality(
-    val _id: String,
-    val name: String,
-    val point: Double
+    @SerializedName("_id") val id: String,
+    @SerializedName("name") val name: String,
+    @SerializedName("point") val point: Double
 ) : Parcelable

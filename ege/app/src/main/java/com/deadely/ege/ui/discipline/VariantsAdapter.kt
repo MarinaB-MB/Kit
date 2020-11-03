@@ -28,7 +28,7 @@ class VariantsAdapter(
             with(itemView) {
                 variantName.text = unit.title
                 itemView.setOnClickListener { clickListener?.onClick(unit) }
-                divider.visibility = if (position == itemCount - 1) View.GONE else View.VISIBLE
+                divider.visibility = if (unit == list.last()) View.GONE else View.VISIBLE
             }
         }
 

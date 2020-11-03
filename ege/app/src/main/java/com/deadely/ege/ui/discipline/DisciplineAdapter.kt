@@ -35,20 +35,24 @@ class DisciplineAdapter(
             with(itemView) {
                 expandableLayout.collapse()
                 tvName.text = unit.name
-                rvVariants.layoutManager = LinearLayoutManager(context)
-                val adapter = VariantsAdapter(unit.variants.toMutableList().sortedBy { it.number },
-                    object : VariantsAdapter.OnClickListener {
-                        override fun onClick(unit: Variant) {
-                            clickListener?.onVariantClick(unit)
-                            preferences.set(CURRENT_DISCIPLINE, unit.eid)
-                        }
-                    })
-                rvVariants.adapter = adapter
+                val variantAdapter =
+                    VariantsAdapter(unit.variants.toMutableList().sortedBy { it.number },
+                        object : VariantsAdapter.OnClickListener {
+                            override fun onClick(unit: Variant) {
+                                clickListener?.onVariantClick(unit)
+                                preferences[CURRENT_DISCIPLINE] = unit.eid
+                            }
+                        })
+                rvVariants.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    adapter = variantAdapter
+                }
+
                 itemView.setOnClickListener {
                     if (expandableLayout.isExpanded) expandableLayout.collapse()
                     else expandableLayout.expand()
                 }
-                divider.visibility = if (position == itemCount - 1) View.GONE else View.VISIBLE
+                divider.visibility = if (unit == list.last()) View.GONE else View.VISIBLE
             }
         }
 

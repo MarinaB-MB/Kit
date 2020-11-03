@@ -57,16 +57,16 @@ class DisciplineViewModel @ViewModelInject constructor(
         for (discipline in data) {
             when (discipline.eid) {
                 MATEMATIKA -> {
-                    preferences[MAX_VALUE_MATEMATIKA] = discipline.max_points
+                    preferences[MAX_VALUE_MATEMATIKA] = discipline.maxPoints
                 }
                 INFORMATIKA -> {
-                    preferences[MAX_VALUE_INFORMATIKA] = discipline.max_points
+                    preferences[MAX_VALUE_INFORMATIKA] = discipline.maxPoints
                 }
                 RYSSKIU -> {
-                    preferences[MAX_VALUE_RYSSKIU] = discipline.max_points
+                    preferences[MAX_VALUE_RYSSKIU] = discipline.maxPoints
                 }
                 FIZIKA -> {
-                    preferences[MAX_VALUE_FIZIKA] = discipline.max_points
+                    preferences[MAX_VALUE_FIZIKA] = discipline.maxPoints
                 }
             }
         }

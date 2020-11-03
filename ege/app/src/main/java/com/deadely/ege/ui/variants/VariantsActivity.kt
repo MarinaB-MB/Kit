@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.text.Html
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -67,16 +66,14 @@ class VariantsActivity : BaseActivity(R.layout.activity_variants) {
                     dataState.exception.printStackTrace()
                     pvLoad.makeGone()
                     llContent.makeGone()
-                    Log.e("VariantsActivity.TAG", "initSubscribe: ${dataState.exception.message}")
                 }
                 is DataState.Success -> {
-                    Log.e("VariantsActivity.TAG", "initSubscribe: ${dataState.data}")
                     pvLoad.makeGone()
                     llContent.makeVisible()
                     variant?.asks?.let { list ->
                         for (ask in list) {
                             for (apiAsk in dataState.data) {
-                                if (ask == apiAsk._id) {
+                                if (ask == apiAsk.id) {
                                     asks.add(apiAsk)
                                 }
                             }
@@ -159,7 +156,7 @@ class VariantsActivity : BaseActivity(R.layout.activity_variants) {
         four.text = ask.answer[3].answer
         image.visibility = if (ask.image.isEmpty()) View.GONE else View.VISIBLE
         if (!ask.image.isNullOrEmpty()) {
-            if (ask.is_svg) {
+            if (ask.isSvg) {
                 GlideToVectorYou.justLoadImage(this, Uri.parse(ask.image), image)
             } else {
                 Glide.with(image.context)

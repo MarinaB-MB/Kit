@@ -60,7 +60,6 @@ class ResultListActivity : BaseActivity(R.layout.activity_result_list) {
     }
 
     private fun openVariantScreen() {
-        rvAsks.adapter = adapter
         adapter.setData(list)
         btnBack.makeVisible()
         llResultCount.makeGone()
@@ -68,15 +67,15 @@ class ResultListActivity : BaseActivity(R.layout.activity_result_list) {
     }
 
     override fun initView() {
-        rvAsks.adapter = adapter
-        rvAsks.layoutManager = LinearLayoutManager(applicationContext)
+        rvAsks.apply {
+            adapter = adapter
+            layoutManager = LinearLayoutManager(applicationContext)
+        }
         tvMore.paintFlags = tvMore.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-
         resultListViewModel.setPoints(points)
         tvMaxValue.text =
             Utils.getString(R.string.max_value).format(resultListViewModel.currentDiscipline)
         resultListViewModel.currentDiscipline = ""
-
         tvAskCount.text = "${successCount}/${allCount}"
         tvPoint.text = points.toString()
     }

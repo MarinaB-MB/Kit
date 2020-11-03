@@ -1,8 +1,5 @@
 package com.deadely.ege.utils
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.util.Base64
 import androidx.core.content.ContextCompat
 import com.deadely.ege.base.App
 
@@ -16,12 +13,6 @@ object Utils {
     @JvmStatic
     fun getColor(id: Int): Int {
         return ContextCompat.getColor(App.instance.applicationContext, id)
-    }
-
-    @JvmStatic
-    fun decodeString(imageString: String): Bitmap {
-        val decodedString: ByteArray = Base64.decode(imageString, Base64.DEFAULT)
-        return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
     }
 
     @JvmStatic

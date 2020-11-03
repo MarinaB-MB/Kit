@@ -2,7 +2,6 @@ package com.deadely.ege.ui.university
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.deadely.ege.R
@@ -24,7 +23,7 @@ class UniversityFragment : BaseFragment(R.layout.fragment_university) {
 
     private val universityViewModel: UniversityViewModel by viewModels()
 
-    private val adapter =
+    private val universityAdapter =
         UniversityAdapter(arrayListOf(), object : UniversityAdapter.OnClickListener {
             override fun onClick(unit: University) {
                 openDetailScreen(unit)
@@ -42,9 +41,11 @@ class UniversityFragment : BaseFragment(R.layout.fragment_university) {
     }
 
     override fun initView() {
-        rvUniversities.layoutManager = LinearLayoutManager(context)
-        rvUniversities.setHasFixedSize(true)
-        rvUniversities.adapter = adapter
+        rvUniversities.apply {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = universityAdapter
+        }
     }
 
     override fun initObserver() {
@@ -58,23 +59,17 @@ class UniversityFragment : BaseFragment(R.layout.fragment_university) {
                     it.exception.printStackTrace()
                     pvLoad.makeGone()
                     rvUniversities.makeGone()
-                    Log.e(TAG, "initSubscribe: ${it.exception.message}")
                 }
                 is DataState.Success -> {
                     pvLoad.makeGone()
                     rvUniversities.makeVisible()
-                    Log.e(TAG, "initSubscribe: ${it.data}")
-                    adapter.setData(it.data)
+                    universityAdapter.setData(it.data)
                 }
             }
         })
     }
 
-    override fun setListeners() {
+    override fun setListeners() {}
 
-    }
-
-    override fun getExtras() {
-
-    }
+    override fun getExtras() {}
 }

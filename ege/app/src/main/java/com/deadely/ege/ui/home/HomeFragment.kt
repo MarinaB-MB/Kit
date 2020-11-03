@@ -22,7 +22,7 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         const val TAG = "HomeFragment.Tag"
     }
 
-    private val adapter =
+    private val universityAdapter =
         UniversityAdapter(arrayListOf(), object : UniversityAdapter.OnClickListener {
             override fun onClick(unit: University) {
                 openDetailScreen(unit)
@@ -86,7 +86,7 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                         }
                     }
                     list = list.distinctBy { it.name }.toMutableList()
-                    adapter.setData(list)
+                    universityAdapter.setData(list)
                 }
             }
         })
@@ -100,9 +100,11 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
             tvDescription.text = Utils.getString(R.string.no_last_result)
             tvDisciplines.makeGone()
         }
-        rvUnis.layoutManager = LinearLayoutManager(context)
-        rvUnis.setHasFixedSize(true)
-        rvUnis.adapter = adapter
+        rvUnis.apply {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = universityAdapter
+        }
         homeViewModel.getUniversities()
     }
 

@@ -23,7 +23,7 @@ class DisciplineFragment : BaseFragment(R.layout.fragment_discipline) {
 
     private val disciplineViewModel: DisciplineViewModel by viewModels()
 
-    private val adapter =
+    private val disciplineAdapter =
         DisciplineAdapter(arrayListOf(), object : DisciplineAdapter.OnClickListener {
             override fun onVariantClick(unit: Variant) {
                 openVariantsScreen(unit)
@@ -35,15 +35,16 @@ class DisciplineFragment : BaseFragment(R.layout.fragment_discipline) {
         val bundle = Bundle().apply {
             putParcelable(VariantsActivity.VARIANT, variants)
         }
-        val intent = Intent(activity, VariantsActivity::class.java)
-        intent.putExtras(bundle)
+        val intent = Intent(activity, VariantsActivity::class.java).apply { putExtras(bundle) }
         startActivity(intent)
     }
 
     override fun initView() {
-        rvDisciplines.layoutManager = LinearLayoutManager(context)
-        rvDisciplines.setHasFixedSize(true)
-        rvDisciplines.adapter = adapter
+        rvDisciplines.apply {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = disciplineAdapter
+        }
     }
 
     override fun initObserver() {
@@ -62,7 +63,7 @@ class DisciplineFragment : BaseFragment(R.layout.fragment_discipline) {
                     pvLoad.makeGone()
                     rvDisciplines.makeVisible()
                     disciplineViewModel.setMaxValues(it.data)
-                    adapter.setData(it.data)
+                    disciplineAdapter.setData(it.data)
                 }
             }
         })
